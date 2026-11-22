@@ -110,10 +110,10 @@ export default function Contact() {
                   <span className="text-xs text-white/50 uppercase tracking-wider block font-medium">Email</span>
                   {/* Email contact link highlighted with reddish-pink hover accent. */}
                   <a
-                    href="mailto:amr.agouriane@gmail.com"
+                    href="mailto:agouriane.amr@gmail.com"
                     className="text-sm md:text-base font-semibold text-white hover:text-[#FA2A55] transition-colors"
                   >
-                    amr.agouriane@gmail.com
+                    agouriane.amr@gmail.com
                   </a>
                 </div>
               </div>
@@ -126,10 +126,10 @@ export default function Contact() {
                   <span className="text-xs text-white/50 uppercase tracking-wider block font-medium">Phone</span>
                   {/* Phone contact link highlighted with reddish-pink hover accent. */}
                   <a
-                    href="tel:+212600000000"
+                    href="tel:+212652609996"
                     className="text-sm md:text-base font-semibold text-white hover:text-[#FA2A55] transition-colors"
                   >
-                    +212 600 000 000
+                    +212 652 609 996
                   </a>
                 </div>
               </div>
@@ -150,7 +150,7 @@ export default function Contact() {
               <span className="text-xs text-white/50 uppercase tracking-wider block mb-3 font-medium">Follow Me</span>
               <div className="flex items-center gap-3">
                 <a
-                  href="https://linkedin.com"
+                  href="https://www.linkedin.com/in/amr-agouriane-521120283/"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="LinkedIn profile"
@@ -159,7 +159,7 @@ export default function Contact() {
                   <Linkedin className="w-4 h-4" />
                 </a>
                 <a
-                  href="https://github.com"
+                  href="https://github.com/Chiakyyy"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="GitHub profile"
@@ -168,7 +168,7 @@ export default function Contact() {
                   <Github className="w-4 h-4" />
                 </a>
                 <a
-                  href="https://wa.me/212600000000"
+                  href="https://wa.me/212652609996"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="WhatsApp or Telegram messenger"
