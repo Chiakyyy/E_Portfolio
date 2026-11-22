@@ -3,7 +3,8 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Mail, Phone, MapPin, Send, CheckCircle2, Linkedin, Github, MessageCircle, X } from "lucide-react";
+// Lucide icons imported for contact details and form interactions.
+import { Mail, Phone, MapPin, Send, CheckCircle2, X } from "lucide-react";
 
 // This component presents the contact information alongside the interactive message form.
 export default function Contact() {
@@ -145,36 +146,52 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* Social media links with hover elevation */}
+            {/* Social media links with authentic brand styling and elevation. */}
             <div className="pt-4 border-t border-white/10">
               <span className="text-xs text-white/50 uppercase tracking-wider block mb-3 font-medium">Follow Me</span>
               <div className="flex items-center gap-3">
+                {/* Official filled linkedin brand button with blue accent glow. */}
                 <a
                   href="https://www.linkedin.com/in/amr-agouriane-521120283/"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="LinkedIn profile"
-                  className="w-10 h-10 rounded-full bg-[#1F2229] border border-white/10 flex items-center justify-center text-white/80 hover:text-white hover:bg-white/15 hover:-translate-y-1 transition-all duration-200"
+                  className="w-11 h-11 rounded-full bg-[#1F2229] border border-white/10 flex items-center justify-center hover:border-[#0A66C2]/60 hover:shadow-[0_0_16px_rgba(10,102,194,0.45)] hover:-translate-y-1 transition-all duration-300 shadow-md"
                 >
-                  <Linkedin className="w-4 h-4" />
+                  {/* Authentic linkedin vector badge with crisp glyph. */}
+                  <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none">
+                    <rect width="24" height="24" rx="4" fill="#0A66C2" />
+                    <path d="M7.86 6.32a1.63 1.63 0 1 0 0 3.26 1.63 1.63 0 0 0 0-3.26zM6.46 10.94h2.8v7.37h-2.8zm4.4 0h2.68v1.01h.04c.37-.71 1.29-1.46 2.66-1.46 2.84 0 3.37 1.87 3.37 4.31v5.51h-2.79v-4.88c0-1.16-.02-2.66-1.62-2.66-1.62 0-1.87 1.27-1.87 2.58v4.96h-2.79z" fill="#FFFFFF" />
+                  </svg>
                 </a>
+
+                {/* Official filled github brand button with purple and white glow. */}
                 <a
                   href="https://github.com/Chiakyyy"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="GitHub profile"
-                  className="w-10 h-10 rounded-full bg-[#1F2229] border border-white/10 flex items-center justify-center text-white/80 hover:text-white hover:bg-white/15 hover:-translate-y-1 transition-all duration-200"
+                  className="w-11 h-11 rounded-full bg-[#1F2229] border border-white/10 flex items-center justify-center hover:border-white/50 hover:shadow-[0_0_16px_rgba(139,92,246,0.35),0_0_8px_rgba(255,255,255,0.4)] hover:-translate-y-1 transition-all duration-300 shadow-md"
                 >
-                  <Github className="w-4 h-4" />
+                  {/* Authentic filled octocat silhouette vector graphic. */}
+                  <svg viewBox="0 0 24 24" className="w-5 h-5" fill="#FFFFFF">
+                    <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+                  </svg>
                 </a>
+
+                {/* Official filled whatsapp brand button with green accent glow. */}
                 <a
                   href="https://wa.me/212652609996"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="WhatsApp or Telegram messenger"
-                  className="w-10 h-10 rounded-full bg-[#1F2229] border border-white/10 flex items-center justify-center text-white/80 hover:text-white hover:bg-white/15 hover:-translate-y-1 transition-all duration-200"
+                  className="w-11 h-11 rounded-full bg-[#1F2229] border border-white/10 flex items-center justify-center hover:border-[#25D366]/60 hover:shadow-[0_0_16px_rgba(37,211,102,0.45)] hover:-translate-y-1 transition-all duration-300 shadow-md"
                 >
-                  <MessageCircle className="w-4 h-4" />
+                  {/* Authentic whatsapp brand icon with green bubble and white handset. */}
+                  <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none">
+                    <path fill="#25D366" d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2z" />
+                    <path fill="#FFFFFF" d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.18-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.91-2.21-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.79.37s-1.04 1.02-1.04 2.48 1.06 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35z" />
+                  </svg>
                 </a>
               </div>
             </div>
