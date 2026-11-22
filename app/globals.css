@@ -17,8 +17,9 @@
     font-family: var(--font-inter), sans-serif;
   }
 
+  /* Global selection styling using the reddish-pink palette. */
   ::selection {
-    background-color: #f97316;
+    background-color: #fa2a55;
     color: #ffffff;
   }
 }

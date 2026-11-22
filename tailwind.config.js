@@ -18,6 +18,8 @@ module.exports = {
           iconBadge: "#1F2229",
         },
         brand: {
+          // Vibrant reddish-pink studio accent color definition.
+          pink: "#FA2A55",
           orange: "#F97316",
           amber: "#C2590A",
           amberLight: "#E07A16",

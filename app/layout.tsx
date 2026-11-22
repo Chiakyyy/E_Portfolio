@@ -40,10 +40,11 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Root layout html structure with reddish-pink selection styling.
   return (
     <html lang="en" className="dark scroll-smooth">
       <body
-        className={`${inter.variable} ${jakarta.variable} font-sans bg-[#050507] text-white antialiased selection:bg-[#F97316] selection:text-white`}
+        className={`${inter.variable} ${jakarta.variable} font-sans bg-[#050507] text-white antialiased selection:bg-[#FA2A55] selection:text-white`}
         suppressHydrationWarning
       >
         {children}

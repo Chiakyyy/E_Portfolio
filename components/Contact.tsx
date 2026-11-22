@@ -108,9 +108,10 @@ export default function Contact() {
                 </div>
                 <div>
                   <span className="text-xs text-white/50 uppercase tracking-wider block font-medium">Email</span>
+                  {/* Email contact link highlighted with reddish-pink hover accent. */}
                   <a
                     href="mailto:amr.agouriane@gmail.com"
-                    className="text-sm md:text-base font-semibold text-white hover:text-[#F97316] transition-colors"
+                    className="text-sm md:text-base font-semibold text-white hover:text-[#FA2A55] transition-colors"
                   >
                     amr.agouriane@gmail.com
                   </a>
@@ -123,9 +124,10 @@ export default function Contact() {
                 </div>
                 <div>
                   <span className="text-xs text-white/50 uppercase tracking-wider block font-medium">Phone</span>
+                  {/* Phone contact link highlighted with reddish-pink hover accent. */}
                   <a
                     href="tel:+212600000000"
-                    className="text-sm md:text-base font-semibold text-white hover:text-[#F97316] transition-colors"
+                    className="text-sm md:text-base font-semibold text-white hover:text-[#FA2A55] transition-colors"
                   >
                     +212 600 000 000
                   </a>
@@ -192,6 +194,7 @@ export default function Contact() {
                   <label htmlFor="name" className="block text-xs font-semibold text-white/70 uppercase tracking-wider mb-2">
                     Name
                   </label>
+                  {/* Name input field with reddish-pink focus ring and soft glow. */}
                   <input
                     id="name"
                     name="name"
@@ -200,7 +203,7 @@ export default function Contact() {
                     value={formData.name}
                     onChange={handleInputChange}
                     placeholder="Your Name"
-                    className="w-full bg-white text-gray-900 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#F97316] transition-all placeholder:text-gray-500 font-medium"
+                    className="w-full bg-white text-gray-900 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#FA2A55] focus:shadow-[0_0_12px_rgba(250,42,85,0.35)] transition-all placeholder:text-gray-500 font-medium"
                   />
                 </div>
 
@@ -208,6 +211,7 @@ export default function Contact() {
                   <label htmlFor="email" className="block text-xs font-semibold text-white/70 uppercase tracking-wider mb-2">
                     Email
                   </label>
+                  {/* Email input field with reddish-pink focus ring and soft glow. */}
                   <input
                     id="email"
                     name="email"
@@ -216,7 +220,7 @@ export default function Contact() {
                     value={formData.email}
                     onChange={handleInputChange}
                     placeholder="Your Email"
-                    className="w-full bg-white text-gray-900 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#F97316] transition-all placeholder:text-gray-500 font-medium"
+                    className="w-full bg-white text-gray-900 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#FA2A55] focus:shadow-[0_0_12px_rgba(250,42,85,0.35)] transition-all placeholder:text-gray-500 font-medium"
                   />
                 </div>
 
@@ -224,6 +228,7 @@ export default function Contact() {
                   <label htmlFor="message" className="block text-xs font-semibold text-white/70 uppercase tracking-wider mb-2">
                     Message
                   </label>
+                  {/* Message textarea field with reddish-pink focus ring and soft glow. */}
                   <textarea
                     id="message"
                     name="message"
@@ -232,7 +237,7 @@ export default function Contact() {
                     value={formData.message}
                     onChange={handleInputChange}
                     placeholder="I'd Love To Hear About Your Project"
-                    className="w-full bg-white text-gray-900 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#F97316] transition-all placeholder:text-gray-500 font-medium resize-none"
+                    className="w-full bg-white text-gray-900 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#FA2A55] focus:shadow-[0_0_12px_rgba(250,42,85,0.35)] transition-all placeholder:text-gray-500 font-medium resize-none"
                   />
                 </div>
 

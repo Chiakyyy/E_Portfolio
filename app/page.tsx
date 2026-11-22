@@ -7,14 +7,15 @@ import Skills from "@/components/Skills";
 import Projects from "@/components/Projects";
 import Contact from "@/components/Contact";
 
-// This home page renders the warm studio hero, animated starfield, and dark space sections.
+// This home page renders the reddish-pink studio hero, animated starfield, and dark space sections.
 export default function Home() {
+  // Main page layout with reddish-pink selection highlight styling.
   return (
-    <main className="relative min-h-screen bg-[#050507] text-white selection:bg-[#F97316] selection:text-white">
+    <main className="relative min-h-screen bg-[#050507] text-white selection:bg-[#FA2A55] selection:text-white">
       {/* Floating glass pill navbar anchored at the top center */}
       <Navbar />
 
-      {/* Hero section with warm amber studio backdrop */}
+      {/* Hero section with vibrant reddish-pink studio backdrop */}
       <Hero />
 
       {/* Deep space middle container with continuous starfield canvas */}

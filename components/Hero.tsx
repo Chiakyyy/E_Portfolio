@@ -1,4 +1,4 @@
-// This client component renders the warm amber studio hero section with typography overlay.
+// This component renders the reddish-pink studio hero section with typography overlay.
 "use client";
 
 import React, { useState } from "react";
@@ -19,15 +19,17 @@ export default function Hero() {
     }
   };
 
+  // Studio hero background gradient radiating reddish-pink from the center.
   return (
     <section
       id="home"
       className="relative w-full min-h-screen h-[100vh] overflow-hidden flex flex-col justify-between"
       style={{
         background:
-          "radial-gradient(circle at 50% 40%, rgba(224, 122, 22, 0.4) 0%, rgba(184, 80, 8, 0.8) 55%, #7a2f02 100%), linear-gradient(135deg, #B85008 0%, #DF7814 50%, #9E4105 100%)",
+          "linear-gradient(135deg, #9E1132 0%, #FA2A55 50%, #6E0921 100%)",
       }}
     >
+      {/* Studio hero background gradient radiating reddish-pink from the center. */}
       {/* This subtle radial vignette enhances depth behind the portrait. */}
       <div className="absolute inset-0 bg-radial-vignette pointer-events-none opacity-40 mix-blend-multiply" />
 
@@ -75,7 +77,8 @@ export default function Hero() {
           {/* This small pill badge signifies availability and focus. */}
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/25 backdrop-blur-md border border-white/20 text-white text-xs font-medium mb-5 shadow-sm">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            <Sparkles className="w-3.5 h-3.5 text-amber-200" />
+            {/* Sparkle icon tinted with soft reddish-pink color. */}
+            <Sparkles className="w-3.5 h-3.5 text-rose-200" />
             <span>Mobile Architect • Flutter / React Native / .NET MAUI</span>
           </div>
 
@@ -84,13 +87,15 @@ export default function Hero() {
           </p>
 
           <div className="mt-8">
+            {/* White pill contact button with reddish-pink hover accent and soft glow. */}
             <a
               href="#contact"
               onClick={scrollToContact}
-              className="group inline-flex items-center gap-4 bg-white text-[#0A0A0C] font-semibold text-sm md:text-base rounded-full pl-6 pr-2 py-2 shadow-2xl hover:bg-neutral-100 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
+              className="group inline-flex items-center gap-4 bg-white text-[#0A0A0C] font-semibold text-sm md:text-base rounded-full pl-6 pr-2 py-2 shadow-2xl hover:shadow-[0_0_24px_rgba(250,42,85,0.35)] hover:bg-neutral-100 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
             >
               <span>Contact Me</span>
-              <span className="w-9 h-9 rounded-full bg-[#0A0A0C] flex items-center justify-center group-hover:bg-[#F97316] transition-colors duration-300">
+              {/* Arrow container that changes to vibrant reddish-pink on hover. */}
+              <span className="w-9 h-9 rounded-full bg-[#0A0A0C] flex items-center justify-center group-hover:bg-[#FA2A55] transition-colors duration-300">
                 <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-0.5 transition-transform duration-300" />
               </span>
             </a>
@@ -98,8 +103,11 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* This bottom typography overlay renders the giant display name across the canvas. */}
-      <div className="relative z-10 w-full flex justify-center pointer-events-none select-none pb-0 overflow-hidden">
+      {/* Smooth gradient transition blending into the dark space starfield section. */}
+      <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent via-[#050507]/40 to-[#050507] pointer-events-none z-10" />
+
+      {/* Giant typography overlay positioned above the backdrop for crisp contrast. */}
+      <div className="relative z-20 w-full flex justify-center pointer-events-none select-none pb-0 overflow-hidden">
         <motion.h1
           initial={{ opacity: 0, y: 80 }}
           animate={{ opacity: 0.95, y: 0 }}

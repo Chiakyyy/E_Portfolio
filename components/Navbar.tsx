@@ -76,24 +76,27 @@ export default function Navbar() {
       transition={{ duration: 0.6, ease: "easeOut" }}
       className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none"
     >
-      <nav className="pointer-events-auto rounded-full backdrop-blur-md bg-black/35 border border-white/15 px-6 md:px-8 py-2.5 md:py-3 shadow-2xl transition-all duration-300">
+      {/* Floating pill navigation container with soft reddish-pink hover glow. */}
+      <nav className="pointer-events-auto rounded-full backdrop-blur-md bg-black/35 border border-white/15 px-6 md:px-8 py-2.5 md:py-3 shadow-2xl hover:border-[#FA2A55]/30 hover:shadow-[0_0_24px_rgba(250,42,85,0.35)] transition-all duration-300">
         <ul className="flex items-center gap-5 md:gap-8">
           {navItems.map((item) => {
             const isActive = activeSection === item.id;
             return (
               <li key={item.id} className="relative">
+                {/* Navigation link with active state highlighted in reddish-pink. */}
                 <a
                   href={`#${item.id}`}
                   onClick={(e) => handleNavClick(e, item.id)}
                   className={`relative text-xs md:text-sm font-medium tracking-wide transition-colors duration-200 py-1 px-1.5 ${
-                    isActive ? "text-[#F97316] font-semibold" : "text-white/80 hover:text-white"
+                    isActive ? "text-[#FA2A55] font-semibold" : "text-white/80 hover:text-[#FA2A55]"
                   }`}
                 >
                   {item.label}
+                  {/* Active indicator line with a reddish-pink glow shadow. */}
                   {isActive && (
                     <motion.div
                       layoutId="activeIndicator"
-                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[#F97316] rounded-full shadow-[0_0_8px_#F97316]"
+                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[#FA2A55] rounded-full shadow-[0_0_8px_#FA2A55]"
                       transition={{ type: "spring", stiffness: 380, damping: 30 }}
                     />
                   )}
