@@ -4,13 +4,14 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 // Lucide icons imported for contact details and form interactions.
-import { Mail, Phone, MapPin, Send, CheckCircle2, X } from "lucide-react";
+import { Mail, Phone, MapPin, Send, CheckCircle2, AlertCircle, X } from "lucide-react";
 
 // This component presents the contact information alongside the interactive message form.
 export default function Contact() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [showToast, setShowToast] = useState(false);
+  // Toast state tracking current delivery feedback status.
+  const [toastStatus, setToastStatus] = useState<"success" | "error" | null>(null);
 
   // This handler updates input state when the user types in form fields.
   const handleInputChange = (
@@ -20,44 +21,88 @@ export default function Contact() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  // This handler simulates asynchronous submission and triggers the toast notification.
-  const handleSubmit = (e: React.FormEvent) => {
+  // Form submission handler sending input data to the contact endpoint.
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) return;
 
     setIsSubmitting(true);
 
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setFormData({ name: "", email: "", message: "" });
-      setShowToast(true);
+    try {
+      // Calling server endpoint to dispatch email through resend.
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
 
+      if (!res.ok) {
+        throw new Error("Failed to send message");
+      }
+
+      // Resetting form inputs upon successful message dispatch.
+      setFormData({ name: "", email: "", message: "" });
+      setToastStatus("success");
+
+      // Auto dismiss timer for success notification.
       setTimeout(() => {
-        setShowToast(false);
-      }, 4000);
-    }, 1000);
+        setToastStatus(null);
+      }, 5000);
+    } catch {
+      // Preserving user input and showing error notification upon failure.
+      setToastStatus("error");
+
+      // Auto dismiss timer for error notification.
+      setTimeout(() => {
+        setToastStatus(null);
+      }, 5000);
+    } finally {
+      // Ending submission loading state.
+      setIsSubmitting(false);
+    }
   };
 
   return (
     <section id="contact" className="relative z-10 bg-[#14161A] pt-24 md:pt-32 pb-12 px-6 md:px-12">
-      {/* This top right floating dark toast notification displays upon successful message delivery. */}
+      {/* Floating feedback toast showing delivery outcome. */}
       <AnimatePresence>
-        {showToast && (
+        {toastStatus && (
           <motion.div
             initial={{ opacity: 0, y: -20, x: 20 }}
             animate={{ opacity: 1, y: 0, x: 0 }}
             exit={{ opacity: 0, y: -20, x: 20 }}
             className="fixed top-6 right-6 z-50 flex items-center gap-3 bg-[#1E2025] border border-white/20 rounded-xl px-4 py-3 shadow-2xl text-white backdrop-blur-md"
           >
-            <div className="w-8 h-8 rounded-full bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center shrink-0">
-              <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+            {/* Status icon badge reflecting submission result. */}
+            <div
+              className={`w-8 h-8 rounded-full border flex items-center justify-center shrink-0 ${
+                toastStatus === "success"
+                  ? "bg-emerald-500/20 border-emerald-500/40"
+                  : "bg-rose-500/20 border-rose-500/40"
+              }`}
+            >
+              {toastStatus === "success" ? (
+                <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+              ) : (
+                <AlertCircle className="w-4 h-4 text-rose-400" />
+              )}
             </div>
+            {/* Descriptive message text based on delivery status. */}
             <div>
-              <p className="text-sm font-semibold text-white">Message sent successfully</p>
-              <p className="text-xs text-white/60">I will get back to you promptly.</p>
+              <p className="text-sm font-semibold text-white">
+                {toastStatus === "success"
+                  ? "Message sent successfully"
+                  : "Failed to send message. Please try again."}
+              </p>
+              <p className="text-xs text-white/60">
+                {toastStatus === "success"
+                  ? "I will get back to you promptly."
+                  : "Please check your network or try again later."}
+              </p>
             </div>
+            {/* Close button dismissing the toast notification. */}
             <button
-              onClick={() => setShowToast(false)}
+              onClick={() => setToastStatus(null)}
               className="ml-2 text-white/50 hover:text-white"
               aria-label="Dismiss toast notification"
             >
