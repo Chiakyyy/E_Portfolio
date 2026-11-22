@@ -33,23 +33,25 @@ export default function Hero() {
       {/* This subtle radial vignette enhances depth behind the portrait. */}
       <div className="absolute inset-0 bg-radial-vignette pointer-events-none opacity-40 mix-blend-multiply" />
 
-      {/* This container aligns the studio portrait centrally with bottom grounding. */}
-      <div className="absolute inset-x-0 bottom-0 top-12 flex items-end justify-center pointer-events-none z-10">
+      {/* Centered portrait container anchored higher in the frame above display typography. */}
+      <div className="absolute left-1/2 -translate-x-1/2 top-14 sm:top-16 md:-top-20 flex items-start justify-center pointer-events-none z-10">
+        {/* Responsive portrait motion wrapper with top alignment and constrained height. */}
         <motion.div
           initial={{ opacity: 0, y: 50, scale: 0.96 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="relative w-[320px] sm:w-[420px] md:w-[500px] lg:w-[580px] h-[72vh] md:h-[84vh] max-h-[820px] flex items-end justify-center"
+          className="relative w-[320px] sm:w-[420px] md:w-[500px] lg:w-[580px] h-[68vh] sm:h-[74vh] md:h-[80vh] max-h-[820px] flex items-start justify-center"
         >
           {!imgError ? (
             <div className="relative w-full h-full">
+              {/* Studio portrait image with smooth alpha gradient mask dissolving lower edges. */}
               <Image
                 src="/images/hero-portrait.png"
                 alt="Amr Agouriane portrait"
                 fill
                 priority
                 sizes="(max-width: 768px) 360px, 580px"
-                className="object-contain object-bottom drop-shadow-[0_20px_50px_rgba(0,0,0,0.65)]"
+                className="object-contain object-top drop-shadow-[0_20px_50px_rgba(0,0,0,0.65)] [mask-image:linear-gradient(to_bottom,black_75%,transparent_98%)] [-webkit-mask-image:linear-gradient(to_bottom,black_75%,transparent_98%)]"
                 onError={() => setImgError(true)}
               />
             </div>
@@ -66,13 +68,14 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* This left aligned copy container highlights the engineering specialization. */}
-      <div className="relative z-20 max-w-7xl mx-auto w-full px-6 md:px-12 pt-32 md:pt-40 flex-1 flex flex-col justify-center">
+      {/* Full width container positioning introductory content flush toward the left margin. */}
+      <div className="relative z-20 w-full pl-4 sm:pl-6 lg:pl-8 pr-6 pt-32 md:pt-40 flex-1 flex flex-col justify-center">
+        {/* Constrained column wrapper maintaining clean separation from the centered portrait. */}
         <motion.div
           initial={{ opacity: 0, x: -40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-          className="max-w-md lg:max-w-xl"
+          className="relative z-30 max-w-sm lg:max-w-[430px]"
         >
           {/* This small pill badge signifies availability and focus. */}
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/25 backdrop-blur-md border border-white/20 text-white text-xs font-medium mb-5 shadow-sm">
@@ -112,7 +115,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 80 }}
           animate={{ opacity: 0.95, y: 0 }}
           transition={{ duration: 1.1, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
-          className="text-[26vw] sm:text-[23vw] md:text-[17rem] lg:text-[21rem] font-black leading-[0.78] tracking-tighter text-white uppercase text-center translate-y-[8%] drop-shadow-[0_15px_30px_rgba(0,0,0,0.35)]"
+          className="text-[26vw] sm:text-[23vw] md:text-[17rem] lg:text-[21rem] font-black leading-[0.78] tracking-tighter text-white text-center translate-y-[8%] drop-shadow-[0_15px_30px_rgba(0,0,0,0.35)]"
         >
           amr
         </motion.h1>
