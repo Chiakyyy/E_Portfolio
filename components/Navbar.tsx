@@ -100,9 +100,8 @@ export default function Navbar() {
                 <a
                   href={`#${item.id}`}
                   onClick={(e) => handleNavClick(e, item.id)}
-                  className={`relative text-xs md:text-sm font-medium tracking-wide transition-colors duration-200 py-1 px-1.5 ${
-                    isActive ? "text-[#FA2A55] font-semibold" : "text-white/80 hover:text-[#FA2A55]"
-                  }`}
+                  className={`relative text-xs md:text-sm font-medium tracking-wide transition-colors duration-200 py-1 px-1.5 ${isActive ? "text-[#FA2A55] font-semibold" : "text-white/80 hover:text-[#FA2A55]"
+                    }`}
                 >
                   {item.label}
                   {/* Active indicator line with a reddish-pink glow shadow. */}
@@ -125,11 +124,10 @@ export default function Navbar() {
             type="button"
             onClick={() => setLanguage("en")}
             aria-label="Switch to english"
-            className={`px-2 py-0.5 rounded-full text-[11px] font-bold tracking-wider transition-all duration-200 ${
-              language === "en"
+            className={`px-2 py-0.5 rounded-full text-[11px] font-bold tracking-wider transition-all duration-200 ${language === "en"
                 ? "bg-[#FA2A55] text-white shadow-[0_0_10px_rgba(250,42,85,0.5)] scale-105"
                 : "text-white/60 hover:text-white"
-            }`}
+              }`}
           >
             EN
           </button>
@@ -137,11 +135,10 @@ export default function Navbar() {
             type="button"
             onClick={() => setLanguage("fr")}
             aria-label="Switch to french"
-            className={`px-2 py-0.5 rounded-full text-[11px] font-bold tracking-wider transition-all duration-200 ${
-              language === "fr"
+            className={`px-2 py-0.5 rounded-full text-[11px] font-bold tracking-wider transition-all duration-200 ${language === "fr"
                 ? "bg-[#FA2A55] text-white shadow-[0_0_10px_rgba(250,42,85,0.5)] scale-105"
                 : "text-white/60 hover:text-white"
-            }`}
+              }`}
           >
             FR
           </button>
