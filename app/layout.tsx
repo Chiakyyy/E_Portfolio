@@ -28,18 +28,82 @@ const cairo = Cairo({
 
 // This metadata object defines the search and social preview tags.
 export const metadata: Metadata = {
-  title: "Amr Agouriane — Cross-Platform Mobile Software Engineer",
+  metadataBase: new URL("https://amr-agouriane-e-portfolio.vercel.app/"),
+  title: "Amr Agouriane | Cross-Platform Mobile Software Engineer (Flutter, React Native, .NET MAUI)",
   description:
-    "Cross-platform mobile developer specializing in building high-performance, offline-first apps that scale across android and ios with flutter, react native, and .net maui.",
+    "Portfolio of Amr Agouriane, Software Engineer & Cross-Platform Mobile Developer specializing in Flutter, React Native, and .NET MAUI. Building high-performance, offline-first iOS & Android apps.",
   keywords: [
     "Amr Agouriane",
+    "Mobile Software Engineer",
     "Flutter Developer",
+    "React Native Developer",
+    ".NET MAUI Developer",
+    "Cross-Platform Mobile App Developer",
+    "Ingénieur Génie Logiciel Maroc",
+    "Développeur Mobile",
+  ],
+  authors: [{ name: "Amr Agouriane", url: "https://amr-agouriane-e-portfolio.vercel.app/" }],
+  creator: "Amr Agouriane",
+  robots: {
+    index: true,
+    follow: true,
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    alternateLocale: ["fr_FR", "ar_MA"],
+    title: "Amr Agouriane | Cross-Platform Mobile Software Engineer (Flutter, React Native, .NET MAUI)",
+    description:
+      "Portfolio of Amr Agouriane, Software Engineer & Cross-Platform Mobile Developer specializing in Flutter, React Native, and .NET MAUI. Building high-performance, offline-first iOS & Android apps.",
+    siteName: "Amr Agouriane Portfolio",
+    url: "https://amr-agouriane-e-portfolio.vercel.app/",
+    images: [
+      {
+        url: "/images/hero-portrait.png",
+        width: 1200,
+        height: 630,
+        alt: "Amr Agouriane — Cross-Platform Mobile Software Engineer",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Amr Agouriane | Cross-Platform Mobile Software Engineer (Flutter, React Native, .NET MAUI)",
+    description:
+      "Portfolio of Amr Agouriane, Software Engineer & Cross-Platform Mobile Developer specializing in Flutter, React Native, and .NET MAUI. Building high-performance, offline-first iOS & Android apps.",
+    images: ["/images/hero-portrait.png"],
+  },
+};
+
+// Structured json-ld metadata for schema.org person representation.
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Amr Agouriane",
+  url: "https://amr-agouriane-e-portfolio.vercel.app/",
+  image: "https://amr-agouriane-e-portfolio.vercel.app/images/hero-portrait.png",
+  jobTitle: "Cross-Platform Mobile Software Engineer",
+  alumniOf: "Université Internationale de Rabat",
+  address: {
+    "@type": "PostalAddress",
+    addressCountry: "Morocco",
+  },
+  knowsAbout: [
+    "Flutter",
     "React Native",
     ".NET MAUI",
-    "Mobile Engineer",
     "Dart",
     "TypeScript",
     "C#",
+    "Kotlin",
+    "Firebase",
+    "SQLite",
+    "PostgreSQL",
+    "Mobile App Architecture",
+  ],
+  sameAs: [
+    "https://www.linkedin.com/in/amr-agouriane-521120283/",
+    "https://github.com/Chiakyyy",
   ],
 };
 
@@ -52,6 +116,13 @@ export default function RootLayout({
   // Root layout html structure with reddish-pink selection styling.
   return (
     <html lang="en" className="dark scroll-smooth">
+      <head>
+        {/* Structured json-ld schema defining personal identity and credentials. */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
+      </head>
       <body
         className={`${inter.variable} ${jakarta.variable} ${cairo.variable} font-sans bg-[#050507] text-white antialiased selection:bg-[#FA2A55] selection:text-white`}
         suppressHydrationWarning

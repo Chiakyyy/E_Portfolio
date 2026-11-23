@@ -98,7 +98,7 @@ export default function About() {
                 {!imgError ? (
                   <Image
                     src="/images/about-portrait.png"
-                    alt="Amr Agouriane monochrome portrait"
+                    alt="Amr Agouriane — Cross-Platform Mobile Developer monochrome portrait"
                     fill
                     sizes="(max-width: 768px) 340px, 380px"
                     className="object-cover grayscale contrast-125 transition-transform duration-500 group-hover:scale-105"

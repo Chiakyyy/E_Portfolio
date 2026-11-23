@@ -51,7 +51,7 @@ export default function Hero() {
               {/* Studio portrait image with smooth alpha gradient mask dissolving lower edges. */}
               <Image
                 src="/images/hero-portrait.png"
-                alt="Amr Agouriane portrait"
+                alt="Amr Agouriane — Cross-Platform Mobile Software Engineer portrait"
                 fill
                 priority
                 sizes="(max-width: 768px) 360px, 580px"
@@ -119,6 +119,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 80 }}
           animate={{ opacity: 0.95, y: 0 }}
           transition={{ duration: 1.1, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
+          aria-label="Amr Agouriane — Cross-Platform Mobile Software Engineer"
           className="text-[26vw] sm:text-[23vw] md:text-[17rem] lg:text-[21rem] font-black leading-[0.78] tracking-tighter text-white text-center translate-y-[8%] drop-shadow-[0_15px_30px_rgba(0,0,0,0.35)]"
         >
           {t.hero.displayName}
