@@ -1,6 +1,6 @@
 // This root layout configures the fonts and html document structure for the application.
 import type { Metadata } from "next";
-import { Inter, Plus_Jakarta_Sans } from "next/font/google";
+import { Inter, Plus_Jakarta_Sans, Cairo } from "next/font/google";
 import "./globals.css";
 // Client provider wrapping children for reactive multi-language translation.
 import { LanguageProvider } from "@/context/LanguageContext";
@@ -16,6 +16,13 @@ const inter = Inter({
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
   variable: "--font-jakarta",
+  display: "swap",
+});
+
+// This loader configures the modern arabic font family.
+const cairo = Cairo({
+  subsets: ["arabic", "latin"],
+  variable: "--font-cairo",
   display: "swap",
 });
 
@@ -46,7 +53,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark scroll-smooth">
       <body
-        className={`${inter.variable} ${jakarta.variable} font-sans bg-[#050507] text-white antialiased selection:bg-[#FA2A55] selection:text-white`}
+        className={`${inter.variable} ${jakarta.variable} ${cairo.variable} font-sans bg-[#050507] text-white antialiased selection:bg-[#FA2A55] selection:text-white`}
         suppressHydrationWarning
       >
         {/* Language provider wrapping page content to enable language switching. */}

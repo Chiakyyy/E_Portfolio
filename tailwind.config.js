@@ -29,6 +29,8 @@ module.exports = {
       fontFamily: {
         sans: ["var(--font-inter)", "sans-serif"],
         display: ["var(--font-jakarta)", "sans-serif"],
+        // Modern arabic font family mapping.
+        arabic: ["var(--font-cairo)", "sans-serif"],
       },
     },
   },

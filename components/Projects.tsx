@@ -110,7 +110,7 @@ function ProjectCard({
         {/* Interactive preview window inside the card */}
         <div className="relative w-full h-[320px] sm:h-[380px] md:h-[440px] rounded-xl overflow-hidden bg-[#0A0C0F] border border-white/10 flex flex-col justify-between group">
           {/* Top simulated device status bar */}
-          <div className="h-9 px-4 bg-[#111318] border-b border-white/10 flex items-center justify-between z-20">
+          <div dir="ltr" className="h-9 px-4 bg-[#111318] border-b border-white/10 flex items-center justify-between z-20">
             <div className="flex items-center gap-2">
               <span className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
               <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
@@ -260,7 +260,7 @@ function ProjectCard({
 
         {/* Card footer with bold title on left and tech tags on right */}
         <div className="mt-4 pt-3 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-          <div>
+          <div className="text-start">
             <h3 className="text-lg md:text-xl font-bold text-white tracking-tight">
               {projectTitle}
             </h3>
@@ -269,7 +269,7 @@ function ProjectCard({
             </p>
           </div>
 
-          <div className="flex flex-wrap gap-2">
+          <div dir="ltr" className="flex flex-wrap gap-2">
             {project.tags.map((tag) => (
               <span
                 key={tag}

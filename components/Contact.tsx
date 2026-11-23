@@ -75,7 +75,7 @@ export default function Contact() {
             initial={{ opacity: 0, y: -20, x: 20 }}
             animate={{ opacity: 1, y: 0, x: 0 }}
             exit={{ opacity: 0, y: -20, x: 20 }}
-            className="fixed top-6 right-6 z-50 flex items-center gap-3 bg-[#1E2025] border border-white/20 rounded-xl px-4 py-3 shadow-2xl text-white backdrop-blur-md"
+            className="fixed top-6 right-6 rtl:right-auto rtl:left-6 z-50 flex items-center gap-3 bg-[#1E2025] border border-white/20 rounded-xl px-4 py-3 shadow-2xl text-white backdrop-blur-md text-start"
           >
             {/* Status icon badge reflecting submission result. */}
             <div
@@ -135,11 +135,11 @@ export default function Contact() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-14 items-start">
           {/* Left column with direct channels and social links */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="md:col-span-5 space-y-8"
+            className="md:col-span-5 space-y-8 text-start"
           >
             <div>
               <h3 className="text-xl md:text-2xl font-bold text-white mb-2">
@@ -161,7 +161,8 @@ export default function Contact() {
                   {/* Email contact link highlighted with reddish-pink hover accent. */}
                   <a
                     href="mailto:agouriane.amr@gmail.com"
-                    className="text-sm md:text-base font-semibold text-white hover:text-[#FA2A55] transition-colors"
+                    dir="ltr"
+                    className="text-sm md:text-base font-semibold text-white hover:text-[#FA2A55] transition-colors inline-block"
                   >
                     agouriane.amr@gmail.com
                   </a>
@@ -177,7 +178,8 @@ export default function Contact() {
                   {/* Phone contact link highlighted with reddish-pink hover accent. */}
                   <a
                     href="tel:+212652609996"
-                    className="text-sm md:text-base font-semibold text-white hover:text-[#FA2A55] transition-colors"
+                    dir="ltr"
+                    className="text-sm md:text-base font-semibold text-white hover:text-[#FA2A55] transition-colors inline-block"
                   >
                     +212 652 609 996
                   </a>
@@ -257,7 +259,7 @@ export default function Contact() {
             <div className="bg-[#1E2025] rounded-2xl p-6 sm:p-8 border border-white/10 shadow-2xl">
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
-                  <label htmlFor="name" className="block text-xs font-semibold text-white/70 uppercase tracking-wider mb-2">
+                  <label htmlFor="name" className="block text-xs font-semibold text-white/70 uppercase tracking-wider mb-2 text-start">
                     {t.contact.nameField}
                   </label>
                   {/* Name input field with reddish-pink focus ring and soft glow. */}
@@ -269,12 +271,12 @@ export default function Contact() {
                     value={formData.name}
                     onChange={handleInputChange}
                     placeholder={t.contact.namePlaceholder}
-                    className="w-full bg-white text-gray-900 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#FA2A55] focus:shadow-[0_0_12px_rgba(250,42,85,0.35)] transition-all placeholder:text-gray-500 font-medium"
+                    className="w-full bg-white text-gray-900 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#FA2A55] focus:shadow-[0_0_12px_rgba(250,42,85,0.35)] transition-all placeholder:text-gray-500 font-medium text-start"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-xs font-semibold text-white/70 uppercase tracking-wider mb-2">
+                  <label htmlFor="email" className="block text-xs font-semibold text-white/70 uppercase tracking-wider mb-2 text-start">
                     {t.contact.emailField}
                   </label>
                   {/* Email input field with reddish-pink focus ring and soft glow. */}
@@ -286,12 +288,12 @@ export default function Contact() {
                     value={formData.email}
                     onChange={handleInputChange}
                     placeholder={t.contact.emailPlaceholder}
-                    className="w-full bg-white text-gray-900 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#FA2A55] focus:shadow-[0_0_12px_rgba(250,42,85,0.35)] transition-all placeholder:text-gray-500 font-medium"
+                    className="w-full bg-white text-gray-900 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#FA2A55] focus:shadow-[0_0_12px_rgba(250,42,85,0.35)] transition-all placeholder:text-gray-500 font-medium text-start"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-xs font-semibold text-white/70 uppercase tracking-wider mb-2">
+                  <label htmlFor="message" className="block text-xs font-semibold text-white/70 uppercase tracking-wider mb-2 text-start">
                     {t.contact.messageField}
                   </label>
                   {/* Message textarea field with reddish-pink focus ring and soft glow. */}
@@ -303,7 +305,7 @@ export default function Contact() {
                     value={formData.message}
                     onChange={handleInputChange}
                     placeholder={t.contact.messagePlaceholder}
-                    className="w-full bg-white text-gray-900 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#FA2A55] focus:shadow-[0_0_12px_rgba(250,42,85,0.35)] transition-all placeholder:text-gray-500 font-medium resize-none"
+                    className="w-full bg-white text-gray-900 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#FA2A55] focus:shadow-[0_0_12px_rgba(250,42,85,0.35)] transition-all placeholder:text-gray-500 font-medium resize-none text-start"
                   />
                 </div>
 
@@ -320,7 +322,7 @@ export default function Contact() {
                   ) : (
                     <>
                       <span>{t.contact.submitButton}</span>
-                      <Send className="w-4 h-4 text-[#0A0A0C]" />
+                      <Send className="w-4 h-4 text-[#0A0A0C] rtl:-scale-x-100" />
                     </>
                   )}
                 </button>

@@ -1,5 +1,5 @@
 // This dictionary exports application translations for all supported languages.
-export type Language = "en" | "fr";
+export type Language = "en" | "fr" | "ar";
 
 // Interface contract for language dictionary entries.
 export interface TranslationDictionary {
@@ -498,6 +498,182 @@ export const translations: Record<Language, TranslationDictionary> = {
       errorTitle: "Échec de l'envoi du message. Veuillez réessayer.",
       errorSubtitle: "Veuillez vérifier votre réseau ou réessayer plus tard.",
       copyright: "© 2026 Amr Agouriane. Tous droits réservés.",
+    },
+  },
+  // Arabic translations dictionary with localized strings and labels.
+  ar: {
+    nav: {
+      home: "الرئيسية",
+      about: "نبذة عني",
+      projects: "المشاريع",
+      contact: "تواصل معي",
+    },
+    hero: {
+      badge: "مهندس تطبيقات الهواتف • Flutter / React Native / .NET MAUI",
+      intro:
+        "مطور تطبيقات هواتف متعددة المنصات متخصص في بناء تطبيقات عالية الأداء تعمل دون اتصال بالإنترنت وقابلة للتوسع على نظامي Android و iOS.",
+      contactCta: "تواصل معي",
+      displayName: "amr",
+    },
+    about: {
+      sectionTitle: "نبذة عني",
+      heading: "مطور تطبيقات هواتف متعددة المنصات",
+      bio: "أقوم بتطوير تطبيقات هواتف حديثة وسريعة الاستجابة وعالية الأداء باستخدام Flutter و React Native و .NET MAUI. أركز على الموثوقية في العمل دون إنترنت، والتكامل المباشر مع عتاد الجهاز، وهندسة واجهات مستخدم نظيفة.",
+      nameLabel: "الاسم :",
+      nameValue: "عمرو أكوريان",
+      locationLabel: "الموقع :",
+      locationValue: "المغرب",
+      projectsLabel: "مشاريع",
+      internshipsLabel: "تداريب مهنية",
+      satisfactionLabel: "رضا العملاء",
+      resumeCta: "تحميل السيرة الذاتية",
+      resumeFile: "/AGOURIANE_AMR_CV_FR.pdf",
+    },
+    skills: {
+      sectionTitle: "المهارات التقنية",
+      subtitle: "استكشف أبرز المهارات التقنية والخبرات العملية",
+    },
+    projects: {
+      sectionTitle: "المشاريع",
+      livePreview: "معاينة مباشرة",
+      closePreview: "إغلاق المعاينة",
+      interactivePreview: "معاينة تفاعلية حية",
+      tabSandbox: "بيئة تجربة التطبيق",
+      tabSpecs: "المواصفات التقنية والموبايل",
+      keyHighlights: "أبرز الإنجازات الهندسية",
+      liveEngine: "المحرك قيد التشغيل",
+      items: {
+        gconstat: {
+          title: "GConstat & My_Expert",
+          subtitle:
+            "تقييم مطالبات التأمين على السيارات مع مجموعة مخططات SkiaSharp",
+          description:
+            "منصة هواتف مؤسسية موجهة لخبراء تسوية الحوادث وحاملي وثائق التأمين. تتميز بالتكامل مع كاميرا الجهاز، والمزامنة بالاعتماد أولاً على التخزين المحلي عبر SQLite، ورسم تفاعلي لمخططات أضرار المركبات باستخدام SkiaSharp.",
+          stats: [
+            { label: "محرك المزامنة", value: "Offline-First" },
+            { label: "محرك الرسم", value: "SkiaSharp 2D" },
+            { label: "التخزين المحلي", value: "SQLite مشفر" },
+          ],
+          reportTitle: "تقرير حادث سير #GC-9042",
+          sqliteSynced: "متزامن مع SQLite",
+          selectArea:
+            "اختر منطقة الضرر (محاكاة لوحة SkiaSharp):",
+          claimStatus: "معاينة حالة المطالبة",
+          targetZonePrefix: "المنطقة المستهدفة :",
+          metaDescription:
+            "بيانات الصور عالية الدقة مدمجة بإحداثيات نظام تحديد المواقع، والطابع الزمني، وتخزين SQLite المؤقت.",
+          cameraReady: "كاميرا العتاد جاهزة",
+          policy: "وثيقة #MA-8491",
+          blueprint: "مخطط أضرار المركبة",
+          skiaVector: "SkiaSharp Vector",
+          impactLogged: "تم تسجيل صدمة المصد الأمامي",
+          photosEvidence: "4 صور إثباتية",
+          geotagged: "محددة جغرافياً وموقعة",
+          dbStorage: "قاعدة بيانات SQLite",
+          pendingSync: "بانتظار المزامنة السحابية",
+          zones: [
+            "المصد الأمامي",
+            "باب السائق",
+            "الزجاج الخلفي",
+            "المصباح الأيسر",
+          ],
+        },
+        deepleaf: {
+          title: "DeepLeaf AI & Native SDKs",
+          subtitle:
+            "تشخيص أمراض المحاصيل عبر الذكاء الاصطناعي على الحافة مع حزم SDK مخصصة",
+          description:
+            "تطبيق تشخيصي مزدوج تم تطويره بـ Flutter و React Native ومدعوم بنماذج TensorFlow Lite المكممة التي تعمل مباشرة على معالجات الأجهزة لتصنيف فوري لأمراض النباتات في وضع عدم الاتصال بزمن استجابة أقل من 20 مللي ثانية.",
+          stats: [
+            { label: "سرعة المعالجة", value: "14ms على الجهاز" },
+            { label: "حجم النموذج", value: "4.8 ميجابايت" },
+            { label: "الدقة", value: "98.4% مقياس F1" },
+          ],
+          engineTitle: "محرك استنتاج الرؤية المحمولة TFLite",
+          latency: "زمن استجابة 14ms",
+          detectedTitle: "تم رصد اللفحة المبكرة للطماطم (نسبة التأكد: 98.6%)",
+          scanningTitle: "جاري مسح أوراق المحصول...",
+          aiMeta:
+            "لا يتطلب اتصالاً سحابياً. يتم تشغيل النموذج محلياً عبر أوزان tflite مكممة.",
+          rescan: "إعادة مسح العينة",
+          confidence: "نسبة ثقة 98.4%",
+          disease: "اللفحة المبكرة (Alternaria solani)",
+          offlineTiming: "تحليل محلي نُفّذ خلال 14 مللي ثانية",
+          tagInt8: "تكميم INT8",
+          tagZeroNetwork: "صفر اتصالات شبكية",
+        },
+        syndicflow: {
+          title: "SyndicFlow & AllRestau",
+          subtitle:
+            "تطبيق طلبات متعدد النكهات وإدارة العقارات المشتركة مع محرك الفواتير",
+          description:
+            "تطبيق لمعالجة مدفوعات اتحاد الملاك وإدارة طلبات نقاط البيع للمطاعم بحجم معاملات كبير. يعتمد على بنية MVVM نظيفة ومستمعين لحظيين من Firebase وتوليد مباشر لملفات PDF على الجهاز.",
+          stats: [
+            { label: "المعمارية", value: "Clean MVVM" },
+            { label: "محرك المستندات", value: "SkiaSharp PDF" },
+            { label: "زمن الاستجابة", value: "لحظي أقل من ثانية" },
+          ],
+          suiteTitle: "حزمة اتحاد الملاك والمطاعم متعددة المستأجرين",
+          realtimeCart: "سلة لحظية",
+          itemMeal: "وجبة البحر المتوسط الفاخرة",
+          itemFee: "واجبات اتحاد الملاك الشهرية",
+          cartQuantity: "كمية السلة:",
+          calculatedTotal: "المجموع المحسوب",
+          directPdf: "محول فواتير PDF مباشر جاهز",
+          downloadInvoice: "تحميل الفاتورة المنشأة",
+          alertInvoice: "تم إنشاء فاتورة PDF وتخزينها في ذاكرة الجهاز.",
+          residenceTitle: "سنديك إقامة الواحة ومقهى",
+          syndicMaintenance: "صيانة اتحاد الملاك الشهرية",
+          mealVoucher: "قسيمة وجبة سريعة #204",
+          pdfReady: "فاتورة PDF جاهزة #INV-8891",
+          cleanMvvm: "معمارية MVVM نظيفة",
+        },
+        telemetry: {
+          title: "Enterprise APM Telemetry",
+          subtitle:
+            "مراقبة صحة الخوادم الحرجة ولوحة تحكم متقدمة للمقاييس الموزعة",
+          description:
+            "عميل مراقبة ورؤية لحظية لمهندسي البنية التحتية وفرق DevOps. يدمج قياسات Dynatrace ووكلاء Zabbix مع خدمات Spring Boot وقواعد بيانات PostgreSQL.",
+          stats: [
+            { label: "الجاهزية", value: "99.98% قيد المراقبة" },
+            { label: "خط معالجة البيانات", value: "Kafka & WebSocket" },
+            { label: "عقد الخوادم", value: "24 خادماً نشطاً" },
+          ],
+          monitorTitle: "مراقب عقد قياس الأداء APM",
+          healthy: "99.98% جاهزية مثالية",
+          postgresTps: "معاملات بوستجريس في الثانية",
+          p99Latency: "زمن استجابة P99",
+          zabbixAlerts: "تنبيهات زابيكس",
+          optimalLoad: "حمل تشغيلي مثالي",
+          latencyTarget: "الهدف أقل من 10ms",
+          agentActive: "وكيل Dynatrace v8.1 نشط",
+          uptime: "99.98% جاهزية",
+        },
+      },
+    },
+    contact: {
+      sectionTitle: "تواصل معي",
+      heading: "معلومات التواصل",
+      subheading:
+        "سواء كنت بحاجة لتطوير تطبيقات هواتف عالية الأداء تعمل دون اتصال بالإنترنت باستخدام Flutter أو React Native أو .NET MAUI، يسعدني تواصلك المباشر.",
+      followMe: "تابعني",
+      emailLabel: "البريد الإلكتروني",
+      phoneLabel: "الهاتف",
+      locationLabel: "الموقع",
+      locationValue: "المغرب",
+      nameField: "الاسم",
+      namePlaceholder: "اسمك الكامل",
+      emailField: "البريد الإلكتروني",
+      emailPlaceholder: "بريدك الإلكتروني",
+      messageField: "الرسالة",
+      messagePlaceholder: "حدثني عن مشروعك...",
+      submitButton: "إرسال الرسالة",
+      sendingButton: "جاري الإرسال...",
+      successTitle: "تم إرسال الرسالة بنجاح",
+      successSubtitle: "سأقوم بالرد عليك في أقرب وقت ممكن.",
+      errorTitle: "فشل إرسال الرسالة. يرجى المحاولة مرة أخرى.",
+      errorSubtitle: "يرجى التحقق من اتصالك بالإنترنت أو إعادة المحاولة لاحقاً.",
+      copyright: "© 2026 عمرو أكوريان. جميع الحقوق محفوظة.",
     },
   },
 };

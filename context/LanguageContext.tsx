@@ -26,21 +26,23 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     try {
       const savedLang = localStorage.getItem(storageKey) as Language | null;
-      if (savedLang === "en" || savedLang === "fr") {
+      if (savedLang === "en" || savedLang === "fr" || savedLang === "ar") {
         setLanguageState(savedLang);
         document.documentElement.lang = savedLang;
+        document.documentElement.dir = savedLang === "ar" ? "rtl" : "ltr";
       }
     } catch {
       // Local storage access error handled gracefully.
     }
   }, []);
 
-  // Function to switch active language and update local storage and document lang.
+  // Function to switch active language and update local storage and document direction.
   const setLanguage = (lang: Language) => {
     setLanguageState(lang);
     try {
       localStorage.setItem(storageKey, lang);
       document.documentElement.lang = lang;
+      document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
     } catch {
       // Local storage write error handled gracefully.
     }

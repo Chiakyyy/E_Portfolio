@@ -126,7 +126,7 @@ export default function Skills() {
         </div>
 
         {/* This wrapper holds navigation controls and the horizontal card reel. */}
-        <div className="relative">
+        <div dir="ltr" className="relative">
           {/* Subtle side fade overlays to blend edges into the pitch background */}
           <div className="absolute left-0 top-0 bottom-6 w-10 bg-gradient-to-r from-[#050507] to-transparent z-10 pointer-events-none hidden md:block" />
           <div className="absolute right-0 top-0 bottom-6 w-10 bg-gradient-to-l from-[#050507] to-transparent z-10 pointer-events-none hidden md:block" />

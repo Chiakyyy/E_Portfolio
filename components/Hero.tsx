@@ -73,11 +73,11 @@ export default function Hero() {
       </div>
 
       {/* Hero text container displayed on desktop and hidden on mobile screens. */}
-      <div className="relative z-20 hidden md:flex flex-col justify-center w-full pl-4 sm:pl-6 lg:pl-8 pr-6 pt-32 md:pt-40 flex-1">
+      <div className="relative z-20 hidden md:flex flex-col justify-center w-full ps-4 sm:ps-6 lg:ps-8 pe-6 pt-32 md:pt-40 flex-1 text-start">
         {/* Constrained column wrapper maintaining clean separation from the centered portrait. */}
         <motion.div
-          initial={{ opacity: 0, x: -40 }}
-          animate={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
           className="relative z-30 max-w-sm lg:max-w-[430px]"
         >
@@ -86,7 +86,7 @@ export default function Hero() {
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
             {/* Sparkle icon tinted with soft reddish-pink color. */}
             <Sparkles className="w-3.5 h-3.5 text-rose-200" />
-            <span>{t.hero.badge}</span>
+            <span className="rtl:text-right">{t.hero.badge}</span>
           </div>
 
           <p className="text-white text-lg sm:text-xl md:text-2xl font-medium leading-relaxed tracking-tight drop-shadow-md">
@@ -98,12 +98,12 @@ export default function Hero() {
             <a
               href="#contact"
               onClick={scrollToContact}
-              className="group inline-flex items-center gap-4 bg-white text-[#0A0A0C] font-semibold text-sm md:text-base rounded-full pl-6 pr-2 py-2 shadow-2xl hover:shadow-[0_0_24px_rgba(250,42,85,0.35)] hover:bg-neutral-100 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
+              className="group inline-flex items-center gap-4 bg-white text-[#0A0A0C] font-semibold text-sm md:text-base rounded-full ps-6 pe-2 py-2 shadow-2xl hover:shadow-[0_0_24px_rgba(250,42,85,0.35)] hover:bg-neutral-100 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
             >
               <span>{t.hero.contactCta}</span>
               {/* Arrow container that changes to vibrant reddish-pink on hover. */}
               <span className="w-9 h-9 rounded-full bg-[#0A0A0C] flex items-center justify-center group-hover:bg-[#FA2A55] transition-colors duration-300">
-                <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-0.5 transition-transform duration-300" />
+                <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5 rtl:rotate-180 transition-transform duration-300" />
               </span>
             </a>
           </div>
@@ -114,7 +114,7 @@ export default function Hero() {
       <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent via-[#050507]/40 to-[#050507] pointer-events-none z-10" />
 
       {/* Giant typography overlay pinned to the bottom for balanced mobile and desktop framing. */}
-      <div className="relative z-20 w-full flex justify-center pointer-events-none select-none pb-0 overflow-hidden mt-auto">
+      <div dir="ltr" className="relative z-20 w-full flex justify-center pointer-events-none select-none pb-0 overflow-hidden mt-auto">
         <motion.h1
           initial={{ opacity: 0, y: 80 }}
           animate={{ opacity: 0.95, y: 0 }}

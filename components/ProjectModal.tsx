@@ -59,7 +59,7 @@ export default function ProjectModal({
         >
           {/* Header row with title and close button */}
           <div className="flex items-start justify-between gap-4 pb-6 border-b border-white/10">
-            <div>
+            <div className="text-start">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#10D9C4]/10 text-[#10D9C4] text-xs font-semibold uppercase tracking-wider mb-2">
                 <span className="w-2 h-2 rounded-full bg-[#10D9C4] animate-pulse" />
                 <span>{t.projects.interactivePreview}</span>
@@ -258,7 +258,7 @@ export default function ProjectModal({
               )}
             </div>
           ) : (
-            <div className="bg-[#0E1013] border border-white/10 rounded-2xl p-6 space-y-4">
+            <div className="bg-[#0E1013] border border-white/10 rounded-2xl p-6 space-y-4 text-start">
               <h4 className="text-sm font-semibold uppercase tracking-wider text-white/60">
                 {t.projects.keyHighlights}
               </h4>
@@ -278,7 +278,7 @@ export default function ProjectModal({
 
           {/* Tech tags and footer actions */}
           <div className="mt-6 pt-6 border-t border-white/10 flex flex-wrap items-center justify-between gap-4">
-            <div className="flex flex-wrap gap-2">
+            <div dir="ltr" className="flex flex-wrap gap-2">
               {project.tags.map((tag) => (
                 <span
                   key={tag}

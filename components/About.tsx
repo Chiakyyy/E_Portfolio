@@ -122,11 +122,11 @@ export default function About() {
 
           {/* This right column contains the descriptive bio, metadata, stats, and resume button. */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="lg:col-span-7 flex flex-col justify-center"
+            className="lg:col-span-7 flex flex-col justify-center text-start"
           >
             <h3 className="text-2xl md:text-3xl font-bold text-white tracking-tight mb-4">
               {t.about.heading}
