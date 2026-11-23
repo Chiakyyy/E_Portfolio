@@ -172,7 +172,7 @@ export const translations: Record<Language, TranslationDictionary> = {
       internshipsLabel: "internships",
       satisfactionLabel: "Client Satisfaction",
       resumeCta: "Download Resume",
-      resumeFile: "/Amr_Agouriane_CV.pdf",
+      resumeFile: "/AGOURIANE_AMR_CV_EN.pdf",
     },
     skills: {
       sectionTitle: "SKILLS",
