@@ -3,19 +3,23 @@
 
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-
-// This array defines the navigation items with section ids and label titles.
-const navItems = [
-  { id: "home", label: "Home" },
-  { id: "about", label: "About" },
-  { id: "projects", label: "Projects" },
-  { id: "contact", label: "Contact" },
-];
+// Hook to access active language state and translation dictionary.
+import { useLanguage } from "@/context/LanguageContext";
 
 // This component manages the active section highlighting and smooth scrolling.
 export default function Navbar() {
   const [activeSection, setActiveSection] = useState("home");
   const [mounted, setMounted] = useState(false);
+  // Active language state and dictionary from context.
+  const { language, setLanguage, t } = useLanguage();
+
+  // Dynamic navigation items mapped from active translations.
+  const navItems = [
+    { id: "home", label: t.nav.home },
+    { id: "about", label: t.nav.about },
+    { id: "projects", label: t.nav.projects },
+    { id: "contact", label: t.nav.contact },
+  ];
 
   // This effect observes viewport scroll position to determine which section is active.
   useEffect(() => {
@@ -50,20 +54,29 @@ export default function Navbar() {
     }
   };
 
-  // This check prevents hydration mismatch during server side rendering.
+  // Hydration fallback rendered before client mount.
   if (!mounted) {
     return (
       <header className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none">
-        <nav className="pointer-events-auto rounded-full backdrop-blur-md bg-black/35 border border-white/15 px-8 py-3 shadow-2xl">
-          <ul className="flex items-center gap-6 md:gap-8">
+        <nav className="pointer-events-auto rounded-full backdrop-blur-md bg-black/35 border border-white/15 px-5 sm:px-7 md:px-8 py-2 sm:py-2.5 md:py-3 shadow-2xl flex items-center gap-3 sm:gap-4 md:gap-6">
+          <ul className="flex items-center gap-4 sm:gap-6 md:gap-8">
             {navItems.map((item) => (
               <li key={item.id}>
-                <span className="text-sm font-medium text-white/70">
+                <span className="text-xs md:text-sm font-medium text-white/70">
                   {item.label}
                 </span>
               </li>
             ))}
           </ul>
+          {/* Static language switcher rendered during server side generation. */}
+          <div className="flex items-center pl-2.5 sm:pl-3 md:pl-4 border-l border-white/15 gap-1">
+            <span className="px-2 py-0.5 rounded-full text-[11px] font-bold tracking-wider bg-[#FA2A55] text-white">
+              EN
+            </span>
+            <span className="px-2 py-0.5 rounded-full text-[11px] font-bold tracking-wider text-white/60">
+              FR
+            </span>
+          </div>
         </nav>
       </header>
     );
@@ -77,8 +90,8 @@ export default function Navbar() {
       className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none"
     >
       {/* Floating pill navigation container with soft reddish-pink hover glow. */}
-      <nav className="pointer-events-auto rounded-full backdrop-blur-md bg-black/35 border border-white/15 px-6 md:px-8 py-2.5 md:py-3 shadow-2xl hover:border-[#FA2A55]/30 hover:shadow-[0_0_24px_rgba(250,42,85,0.35)] transition-all duration-300">
-        <ul className="flex items-center gap-5 md:gap-8">
+      <nav className="pointer-events-auto rounded-full backdrop-blur-md bg-black/35 border border-white/15 px-5 sm:px-7 md:px-8 py-2 sm:py-2.5 md:py-3 shadow-2xl hover:border-[#FA2A55]/30 hover:shadow-[0_0_24px_rgba(250,42,85,0.35)] transition-all duration-300 flex items-center gap-3 sm:gap-4 md:gap-6">
+        <ul className="flex items-center gap-4 sm:gap-6 md:gap-8">
           {navItems.map((item) => {
             const isActive = activeSection === item.id;
             return (
@@ -105,6 +118,34 @@ export default function Navbar() {
             );
           })}
         </ul>
+
+        {/* Language switch toggle buttons integrated into the navigation pill. */}
+        <div className="flex items-center pl-2.5 sm:pl-3 md:pl-4 border-l border-white/15 gap-1">
+          <button
+            type="button"
+            onClick={() => setLanguage("en")}
+            aria-label="Switch to english"
+            className={`px-2 py-0.5 rounded-full text-[11px] font-bold tracking-wider transition-all duration-200 ${
+              language === "en"
+                ? "bg-[#FA2A55] text-white shadow-[0_0_10px_rgba(250,42,85,0.5)] scale-105"
+                : "text-white/60 hover:text-white"
+            }`}
+          >
+            EN
+          </button>
+          <button
+            type="button"
+            onClick={() => setLanguage("fr")}
+            aria-label="Switch to french"
+            className={`px-2 py-0.5 rounded-full text-[11px] font-bold tracking-wider transition-all duration-200 ${
+              language === "fr"
+                ? "bg-[#FA2A55] text-white shadow-[0_0_10px_rgba(250,42,85,0.5)] scale-105"
+                : "text-white/60 hover:text-white"
+            }`}
+          >
+            FR
+          </button>
+        </div>
       </nav>
     </motion.header>
   );

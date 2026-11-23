@@ -5,10 +5,14 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight, Smartphone, Sparkles } from "lucide-react";
+// Hook to access localized strings for hero section.
+import { useLanguage } from "@/context/LanguageContext";
 
 // This component presents the main hero banner with studio lighting and call to action.
 export default function Hero() {
   const [imgError, setImgError] = useState(false);
+  // Translation dictionary from active language context.
+  const { t } = useLanguage();
 
   // This handler scrolls smoothly down to the contact form section.
   const scrollToContact = (e: React.MouseEvent) => {
@@ -82,11 +86,11 @@ export default function Hero() {
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
             {/* Sparkle icon tinted with soft reddish-pink color. */}
             <Sparkles className="w-3.5 h-3.5 text-rose-200" />
-            <span>Mobile Architect • Flutter / React Native / .NET MAUI</span>
+            <span>{t.hero.badge}</span>
           </div>
 
           <p className="text-white text-lg sm:text-xl md:text-2xl font-medium leading-relaxed tracking-tight drop-shadow-md">
-            Cross-Platform Mobile Developer Specializing In Building High-Performance, Offline-First Apps That Scale Across Android &amp; iOS.
+            {t.hero.intro}
           </p>
 
           <div className="mt-8">
@@ -96,7 +100,7 @@ export default function Hero() {
               onClick={scrollToContact}
               className="group inline-flex items-center gap-4 bg-white text-[#0A0A0C] font-semibold text-sm md:text-base rounded-full pl-6 pr-2 py-2 shadow-2xl hover:shadow-[0_0_24px_rgba(250,42,85,0.35)] hover:bg-neutral-100 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
             >
-              <span>Contact Me</span>
+              <span>{t.hero.contactCta}</span>
               {/* Arrow container that changes to vibrant reddish-pink on hover. */}
               <span className="w-9 h-9 rounded-full bg-[#0A0A0C] flex items-center justify-center group-hover:bg-[#FA2A55] transition-colors duration-300">
                 <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-0.5 transition-transform duration-300" />
@@ -117,7 +121,7 @@ export default function Hero() {
           transition={{ duration: 1.1, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
           className="text-[26vw] sm:text-[23vw] md:text-[17rem] lg:text-[21rem] font-black leading-[0.78] tracking-tighter text-white text-center translate-y-[8%] drop-shadow-[0_15px_30px_rgba(0,0,0,0.35)]"
         >
-          amr
+          {t.hero.displayName}
         </motion.h1>
       </div>
     </section>

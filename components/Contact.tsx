@@ -5,6 +5,8 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 // Lucide icons imported for contact details and form interactions.
 import { Mail, Phone, MapPin, Send, CheckCircle2, AlertCircle, X } from "lucide-react";
+// Hook to access localized strings for contact section.
+import { useLanguage } from "@/context/LanguageContext";
 
 // This component presents the contact information alongside the interactive message form.
 export default function Contact() {
@@ -12,6 +14,8 @@ export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   // Toast state tracking current delivery feedback status.
   const [toastStatus, setToastStatus] = useState<"success" | "error" | null>(null);
+  // Active language translations from context.
+  const { t } = useLanguage();
 
   // This handler updates input state when the user types in form fields.
   const handleInputChange = (
@@ -91,13 +95,13 @@ export default function Contact() {
             <div>
               <p className="text-sm font-semibold text-white">
                 {toastStatus === "success"
-                  ? "Message sent successfully"
-                  : "Failed to send message. Please try again."}
+                  ? t.contact.successTitle
+                  : t.contact.errorTitle}
               </p>
               <p className="text-xs text-white/60">
                 {toastStatus === "success"
-                  ? "I will get back to you promptly."
-                  : "Please check your network or try again later."}
+                  ? t.contact.successSubtitle
+                  : t.contact.errorSubtitle}
               </p>
             </div>
             {/* Close button dismissing the toast notification. */}
@@ -122,7 +126,7 @@ export default function Contact() {
             transition={{ duration: 0.6 }}
             className="text-3xl md:text-4xl font-extrabold tracking-wider text-white uppercase"
           >
-            GET IN TOUCH
+            {t.contact.sectionTitle}
           </motion.h2>
           <div className="w-14 h-1 bg-white mx-auto mt-3 rounded-full" />
         </div>
@@ -139,10 +143,10 @@ export default function Contact() {
           >
             <div>
               <h3 className="text-xl md:text-2xl font-bold text-white mb-2">
-                Let&apos;s Build Something Resilient
+                {t.contact.heading}
               </h3>
               <p className="text-white/70 text-sm leading-relaxed">
-                Whether you need high-performance offline mobile apps in Flutter, React Native, or .NET MAUI, reach out directly.
+                {t.contact.subheading}
               </p>
             </div>
 
@@ -153,7 +157,7 @@ export default function Contact() {
                   <Mail className="w-5 h-5 text-white" />
                 </div>
                 <div>
-                  <span className="text-xs text-white/50 uppercase tracking-wider block font-medium">Email</span>
+                  <span className="text-xs text-white/50 uppercase tracking-wider block font-medium">{t.contact.emailLabel}</span>
                   {/* Email contact link highlighted with reddish-pink hover accent. */}
                   <a
                     href="mailto:agouriane.amr@gmail.com"
@@ -169,7 +173,7 @@ export default function Contact() {
                   <Phone className="w-5 h-5 text-white" />
                 </div>
                 <div>
-                  <span className="text-xs text-white/50 uppercase tracking-wider block font-medium">Phone</span>
+                  <span className="text-xs text-white/50 uppercase tracking-wider block font-medium">{t.contact.phoneLabel}</span>
                   {/* Phone contact link highlighted with reddish-pink hover accent. */}
                   <a
                     href="tel:+212652609996"
@@ -185,15 +189,15 @@ export default function Contact() {
                   <MapPin className="w-5 h-5 text-white" />
                 </div>
                 <div>
-                  <span className="text-xs text-white/50 uppercase tracking-wider block font-medium">Location</span>
-                  <span className="text-sm md:text-base font-semibold text-white">Morocco</span>
+                  <span className="text-xs text-white/50 uppercase tracking-wider block font-medium">{t.contact.locationLabel}</span>
+                  <span className="text-sm md:text-base font-semibold text-white">{t.contact.locationValue}</span>
                 </div>
               </div>
             </div>
 
             {/* Social media links with authentic brand styling and elevation. */}
             <div className="pt-4 border-t border-white/10">
-              <span className="text-xs text-white/50 uppercase tracking-wider block mb-3 font-medium">Follow Me</span>
+              <span className="text-xs text-white/50 uppercase tracking-wider block mb-3 font-medium">{t.contact.followMe}</span>
               <div className="flex items-center gap-3">
                 {/* Official filled linkedin brand button with blue accent glow. */}
                 <a
@@ -254,7 +258,7 @@ export default function Contact() {
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
                   <label htmlFor="name" className="block text-xs font-semibold text-white/70 uppercase tracking-wider mb-2">
-                    Name
+                    {t.contact.nameField}
                   </label>
                   {/* Name input field with reddish-pink focus ring and soft glow. */}
                   <input
@@ -264,14 +268,14 @@ export default function Contact() {
                     required
                     value={formData.name}
                     onChange={handleInputChange}
-                    placeholder="Your Name"
+                    placeholder={t.contact.namePlaceholder}
                     className="w-full bg-white text-gray-900 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#FA2A55] focus:shadow-[0_0_12px_rgba(250,42,85,0.35)] transition-all placeholder:text-gray-500 font-medium"
                   />
                 </div>
 
                 <div>
                   <label htmlFor="email" className="block text-xs font-semibold text-white/70 uppercase tracking-wider mb-2">
-                    Email
+                    {t.contact.emailField}
                   </label>
                   {/* Email input field with reddish-pink focus ring and soft glow. */}
                   <input
@@ -281,14 +285,14 @@ export default function Contact() {
                     required
                     value={formData.email}
                     onChange={handleInputChange}
-                    placeholder="Your Email"
+                    placeholder={t.contact.emailPlaceholder}
                     className="w-full bg-white text-gray-900 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#FA2A55] focus:shadow-[0_0_12px_rgba(250,42,85,0.35)] transition-all placeholder:text-gray-500 font-medium"
                   />
                 </div>
 
                 <div>
                   <label htmlFor="message" className="block text-xs font-semibold text-white/70 uppercase tracking-wider mb-2">
-                    Message
+                    {t.contact.messageField}
                   </label>
                   {/* Message textarea field with reddish-pink focus ring and soft glow. */}
                   <textarea
@@ -298,7 +302,7 @@ export default function Contact() {
                     rows={4}
                     value={formData.message}
                     onChange={handleInputChange}
-                    placeholder="I'd Love To Hear About Your Project"
+                    placeholder={t.contact.messagePlaceholder}
                     className="w-full bg-white text-gray-900 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#FA2A55] focus:shadow-[0_0_12px_rgba(250,42,85,0.35)] transition-all placeholder:text-gray-500 font-medium resize-none"
                   />
                 </div>
@@ -311,11 +315,11 @@ export default function Contact() {
                   {isSubmitting ? (
                     <>
                       <span className="w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin" />
-                      <span>Sending...</span>
+                      <span>{t.contact.sendingButton}</span>
                     </>
                   ) : (
                     <>
-                      <span>Send Message</span>
+                      <span>{t.contact.submitButton}</span>
                       <Send className="w-4 h-4 text-[#0A0A0C]" />
                     </>
                   )}
@@ -328,7 +332,7 @@ export default function Contact() {
         {/* Footer section with subtle top border */}
         <div className="mt-20 pt-8 border-t border-white/10 text-center">
           <p className="text-white/60 text-xs md:text-sm">
-            &copy; 2026 Amr Agouriane. All Rights Reserved.
+            {t.contact.copyright}
           </p>
         </div>
       </div>

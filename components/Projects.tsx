@@ -5,6 +5,8 @@ import React, { useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Eye, Shield, Camera, Leaf, Activity, Utensils, CheckCircle, Database, ChevronRight, Smartphone, Sparkles, Layers } from "lucide-react";
 import ProjectModal, { ProjectItem } from "./ProjectModal";
+// Hook to access active language translations.
+import { useLanguage } from "@/context/LanguageContext";
 
 // This array defines the showcase project entries with detailed specifications.
 const projectsList: ProjectItem[] = [
@@ -79,12 +81,19 @@ function ProjectCard({
   onOpenPreview: (project: ProjectItem) => void;
 }) {
   const cardRef = useRef<HTMLDivElement | null>(null);
+  // Translation dictionary from active language context.
+  const { t } = useLanguage();
+  // Active project details matching selected language.
+  const itemData = t.projects.items[project.id as keyof typeof t.projects.items];
+  const projectTitle = itemData?.title || project.title;
+  const projectSubtitle = itemData?.subtitle || project.subtitle;
+
   const { scrollYProgress } = useScroll({
     target: cardRef,
     offset: ["start end", "start start"],
   });
 
-  // Calculate subtle scaling and translation for the stacked deck effect
+  // Calculate subtle scaling and translation for the stacked deck effect.
   const scale = useTransform(scrollYProgress, [0, 1], [0.93 + index * 0.015, 1]);
   const opacity = useTransform(scrollYProgress, [0, 0.4, 1], [0.5, 0.9, 1]);
 
@@ -113,7 +122,7 @@ function ProjectCard({
             <div className="flex items-center gap-3 text-[11px] font-mono text-white/60">
               <span className="text-emerald-400 flex items-center gap-1">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                Live Engine
+                {t.projects.liveEngine}
               </span>
               <span>60 FPS</span>
             </div>
@@ -244,7 +253,7 @@ function ProjectCard({
               className="px-6 py-3 rounded-full bg-[#10D9C4] text-[#050507] font-bold text-xs md:text-sm tracking-wide shadow-[0_0_25px_rgba(16,217,196,0.65)] hover:shadow-[0_0_35px_rgba(16,217,196,0.9)] hover:scale-105 active:scale-95 transition-all duration-300 flex items-center gap-2"
             >
               <Eye className="w-4 h-4 text-[#050507]" />
-              <span>Live Preview</span>
+              <span>{t.projects.livePreview}</span>
             </button>
           </div>
         </div>
@@ -253,10 +262,10 @@ function ProjectCard({
         <div className="mt-4 pt-3 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div>
             <h3 className="text-lg md:text-xl font-bold text-white tracking-tight">
-              {project.title}
+              {projectTitle}
             </h3>
             <p className="text-white/60 text-xs mt-0.5 hidden sm:block">
-              {project.subtitle}
+              {projectSubtitle}
             </p>
           </div>
 
@@ -279,6 +288,8 @@ function ProjectCard({
 // This component handles the complete projects showcase with stacked card animations.
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
+  // Translation dictionary from active language context.
+  const { t } = useLanguage();
 
   return (
     <section id="projects" className="relative z-10 py-24 md:py-32 px-6 md:px-12">
@@ -292,7 +303,7 @@ export default function Projects() {
             transition={{ duration: 0.6 }}
             className="text-3xl md:text-4xl font-extrabold tracking-wider text-white uppercase"
           >
-            PROJECTS
+            {t.projects.sectionTitle}
           </motion.h2>
           <div className="w-14 h-1 bg-white mx-auto mt-3 rounded-full" />
         </div>

@@ -4,6 +4,8 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ExternalLink, ShieldCheck, Camera, Sparkles, Check, RefreshCw, Cpu, Activity, ShoppingBag, FileText } from "lucide-react";
+// Hook to access translated modal content.
+import { useLanguage } from "@/context/LanguageContext";
 
 // This interface defines the data contract for project previews.
 export interface ProjectItem {
@@ -29,8 +31,17 @@ export default function ProjectModal({
   const [leafHealth, setLeafHealth] = useState<"scanning" | "detected">("detected");
   const [cartCount, setCartCount] = useState<number>(2);
   const [serverStatus, setServerStatus] = useState<"optimal" | "recalibrating">("optimal");
+  // Translation dictionary from active language context.
+  const { t } = useLanguage();
 
   if (!project) return null;
+
+  // Active project details matching selected language.
+  const itemData = t.projects.items[project.id as keyof typeof t.projects.items];
+  const projectTitle = itemData?.title || project.title;
+  const projectSubtitle = itemData?.subtitle || project.subtitle;
+  const projectDescription = itemData?.description || project.description;
+  const projectStats = itemData?.stats || project.stats;
 
   return (
     <AnimatePresence>
@@ -51,12 +62,12 @@ export default function ProjectModal({
             <div>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#10D9C4]/10 text-[#10D9C4] text-xs font-semibold uppercase tracking-wider mb-2">
                 <span className="w-2 h-2 rounded-full bg-[#10D9C4] animate-pulse" />
-                <span>Interactive Live Preview</span>
+                <span>{t.projects.interactivePreview}</span>
               </div>
               <h3 className="text-2xl md:text-3xl font-bold tracking-tight text-white">
-                {project.title}
+                {projectTitle}
               </h3>
-              <p className="text-white/60 text-sm mt-1">{project.subtitle}</p>
+              <p className="text-white/60 text-sm mt-1">{projectSubtitle}</p>
             </div>
 
             <button
@@ -78,7 +89,7 @@ export default function ProjectModal({
                   : "bg-white/5 text-white/70 hover:text-white hover:bg-white/10"
               }`}
             >
-              Live App Sandbox
+              {t.projects.tabSandbox}
             </button>
             <button
               onClick={() => setActiveTab("architecture")}
@@ -88,7 +99,7 @@ export default function ProjectModal({
                   : "bg-white/5 text-white/70 hover:text-white hover:bg-white/10"
               }`}
             >
-              Offline &amp; Mobile Specs
+              {t.projects.tabSpecs}
             </button>
           </div>
 
@@ -249,13 +260,13 @@ export default function ProjectModal({
           ) : (
             <div className="bg-[#0E1013] border border-white/10 rounded-2xl p-6 space-y-4">
               <h4 className="text-sm font-semibold uppercase tracking-wider text-white/60">
-                Key Engineering Highlights
+                {t.projects.keyHighlights}
               </h4>
               <p className="text-sm text-white/80 leading-relaxed">
-                {project.description}
+                {projectDescription}
               </p>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-4 border-t border-white/10">
-                {project.stats.map((stat) => (
+                {projectStats.map((stat) => (
                   <div key={stat.label} className="bg-[#181A20] p-3 rounded-xl border border-white/5">
                     <span className="text-[11px] text-white/50 block">{stat.label}</span>
                     <span className="text-sm font-bold text-white mt-0.5 block">{stat.value}</span>
@@ -282,7 +293,7 @@ export default function ProjectModal({
               onClick={onClose}
               className="px-6 py-2.5 rounded-full bg-white text-black font-semibold text-xs hover:bg-neutral-200 transition-colors"
             >
-              Close Preview
+              {t.projects.closePreview}
             </button>
           </div>
         </motion.div>

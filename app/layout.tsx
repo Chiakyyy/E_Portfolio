@@ -2,6 +2,8 @@
 import type { Metadata } from "next";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
+// Client provider wrapping children for reactive multi-language translation.
+import { LanguageProvider } from "@/context/LanguageContext";
 
 // This loader configures the primary sans serif font family.
 const inter = Inter({
@@ -47,7 +49,10 @@ export default function RootLayout({
         className={`${inter.variable} ${jakarta.variable} font-sans bg-[#050507] text-white antialiased selection:bg-[#FA2A55] selection:text-white`}
         suppressHydrationWarning
       >
-        {children}
+        {/* Language provider wrapping page content to enable language switching. */}
+        <LanguageProvider>
+          {children}
+        </LanguageProvider>
       </body>
     </html>
   );

@@ -5,6 +5,8 @@ import React, { useRef, useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { TechIcon } from "./TechIcons";
+// Hook to access active language translations.
+import { useLanguage } from "@/context/LanguageContext";
 
 // This interface defines skill data items including proficiency percentage.
 interface SkillItem {
@@ -36,6 +38,8 @@ export default function Skills() {
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeftState, setScrollLeftState] = useState(0);
+  // Translation dictionary from active language context.
+  const { t } = useLanguage();
 
   // This function updates the normalized scroll progress ratio between zero and one.
   const handleScroll = useCallback(() => {
@@ -113,11 +117,11 @@ export default function Skills() {
             transition={{ duration: 0.6 }}
             className="text-3xl md:text-4xl font-extrabold tracking-wider text-white uppercase"
           >
-            SKILLS
+            {t.skills.sectionTitle}
           </motion.h2>
           <div className="w-14 h-1 bg-white mx-auto mt-3 rounded-full" />
           <p className="text-white/70 text-sm md:text-base mt-4 font-medium">
-            Let&apos;s Explore Popular Skills &amp; Experience
+            {t.skills.subtitle}
           </p>
         </div>
 

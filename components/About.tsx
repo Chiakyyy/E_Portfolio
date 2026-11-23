@@ -4,7 +4,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { motion, useInView } from "framer-motion";
-import { User, MapPin, Download, Award, Briefcase, CheckCircle2 } from "lucide-react";
+import { User, MapPin, Download } from "lucide-react";
+// Hook to access active language translations.
+import { useLanguage } from "@/context/LanguageContext";
 
 // This interface defines properties for counting up statistics.
 interface StatProps {
@@ -61,6 +63,8 @@ function StatCounter({ value, suffix = "", label }: StatProps) {
 // This component presents the biographical summary, location info, and credentials.
 export default function About() {
   const [imgError, setImgError] = useState(false);
+  // Translation dictionary from active language context.
+  const { t } = useLanguage();
 
   return (
     <section id="about" className="relative z-10 py-24 md:py-32 px-6 md:px-12">
@@ -74,7 +78,7 @@ export default function About() {
             transition={{ duration: 0.6 }}
             className="text-3xl md:text-4xl font-extrabold tracking-wider text-white uppercase"
           >
-            ABOUT ME
+            {t.about.sectionTitle}
           </motion.h2>
           <div className="w-14 h-1 bg-white mx-auto mt-3 rounded-full" />
         </div>
@@ -106,8 +110,8 @@ export default function About() {
                     <div className="w-24 h-24 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mb-4">
                       <User className="w-10 h-10 text-white/70" />
                     </div>
-                    <span className="text-white font-bold text-lg">Amr Agouriane</span>
-                    <span className="text-white/50 text-xs mt-1">Mobile Systems Architect</span>
+                    <span className="text-white font-bold text-lg">{t.about.nameValue}</span>
+                    <span className="text-white/50 text-xs mt-1">{t.about.heading}</span>
                   </div>
                 )}
                 {/* Subtle vignette frame overlay */}
@@ -125,11 +129,11 @@ export default function About() {
             className="lg:col-span-7 flex flex-col justify-center"
           >
             <h3 className="text-2xl md:text-3xl font-bold text-white tracking-tight mb-4">
-              Cross-Platform Mobile Developer
+              {t.about.heading}
             </h3>
 
             <p className="text-white/80 text-base md:text-lg leading-relaxed font-normal mb-8">
-              I build modern, responsive, and high-performance mobile applications using Flutter, React Native, and .NET MAUI. I focus on offline-first reliability, native hardware integration, and clean UI architectures.
+              {t.about.bio}
             </p>
 
             {/* This metadata row displays key personal details with white icons. */}
@@ -139,8 +143,8 @@ export default function About() {
                   <User className="w-5 h-5 text-white" />
                 </div>
                 <div>
-                  <span className="text-xs text-white/50 block font-medium">Name</span>
-                  <span className="text-sm font-semibold text-white">Amr Agouriane</span>
+                  <span className="text-xs text-white/50 block font-medium">{t.about.nameLabel}</span>
+                  <span className="text-sm font-semibold text-white">{t.about.nameValue}</span>
                 </div>
               </div>
 
@@ -149,30 +153,30 @@ export default function About() {
                   <MapPin className="w-5 h-5 text-white" />
                 </div>
                 <div>
-                  <span className="text-xs text-white/50 block font-medium">Location</span>
-                  <span className="text-sm font-semibold text-white">Morocco</span>
+                  <span className="text-xs text-white/50 block font-medium">{t.about.locationLabel}</span>
+                  <span className="text-sm font-semibold text-white">{t.about.locationValue}</span>
                 </div>
               </div>
             </div>
 
             {/* This grid presents the three count-up metric cards. */}
             <div className="grid grid-cols-3 gap-3 md:gap-4 mb-8">
-              <StatCounter value={10} suffix="+" label="projects" />
-              <StatCounter value={3} suffix="+" label="internships" />
-              <StatCounter value={99} suffix="%" label="Client Satisfaction" />
+              <StatCounter value={10} suffix="+" label={t.about.projectsLabel} />
+              <StatCounter value={3} suffix="+" label={t.about.internshipsLabel} />
+              <StatCounter value={99} suffix="%" label={t.about.satisfactionLabel} />
             </div>
 
             {/* This download link lets recruiters fetch the verified curriculum vitae document. */}
             <div>
               <a
-                href="/Amr_Agouriane_CV.pdf"
-                download="Amr_Agouriane_CV.pdf"
+                href={t.about.resumeFile}
+                download={t.about.resumeFile.replace("/", "")}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-3 bg-white text-[#0A0A0C] font-semibold text-sm rounded-full px-7 py-3 shadow-xl hover:bg-neutral-100 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
               >
                 <Download className="w-4 h-4 text-[#0A0A0C]" />
-                <span className="capitalize">download resume</span>
+                <span className="capitalize">{t.about.resumeCta}</span>
               </a>
             </div>
           </motion.div>
