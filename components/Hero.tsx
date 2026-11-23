@@ -68,8 +68,8 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* Full width container positioning introductory content flush toward the left margin. */}
-      <div className="relative z-20 w-full pl-4 sm:pl-6 lg:pl-8 pr-6 pt-32 md:pt-40 flex-1 flex flex-col justify-center">
+      {/* Hero text container displayed on desktop and hidden on mobile screens. */}
+      <div className="relative z-20 hidden md:flex flex-col justify-center w-full pl-4 sm:pl-6 lg:pl-8 pr-6 pt-32 md:pt-40 flex-1">
         {/* Constrained column wrapper maintaining clean separation from the centered portrait. */}
         <motion.div
           initial={{ opacity: 0, x: -40 }}
@@ -109,8 +109,8 @@ export default function Hero() {
       {/* Smooth gradient transition blending into the dark space starfield section. */}
       <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent via-[#050507]/40 to-[#050507] pointer-events-none z-10" />
 
-      {/* Giant typography overlay positioned above the backdrop for crisp contrast. */}
-      <div className="relative z-20 w-full flex justify-center pointer-events-none select-none pb-0 overflow-hidden">
+      {/* Giant typography overlay pinned to the bottom for balanced mobile and desktop framing. */}
+      <div className="relative z-20 w-full flex justify-center pointer-events-none select-none pb-0 overflow-hidden mt-auto">
         <motion.h1
           initial={{ opacity: 0, y: 80 }}
           animate={{ opacity: 0.95, y: 0 }}
