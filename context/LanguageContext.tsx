@@ -22,18 +22,29 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   // Active language state defaulting to english.
   const [language, setLanguageState] = useState<Language>("en");
 
-  // Effect to load stored language preference from browser local storage on mount.
+  // Effect to determine active language from saved preference or browser settings on mount.
   useEffect(() => {
+    let targetLang: Language = "en";
+
     try {
       const savedLang = localStorage.getItem(storageKey) as Language | null;
       if (savedLang === "en" || savedLang === "fr" || savedLang === "ar") {
-        setLanguageState(savedLang);
-        document.documentElement.lang = savedLang;
-        document.documentElement.dir = savedLang === "ar" ? "rtl" : "ltr";
+        targetLang = savedLang;
+      } else if (typeof navigator !== "undefined") {
+        const browserLang = (navigator.language || navigator.languages?.[0] || "").toLowerCase();
+        if (browserLang.startsWith("fr")) {
+          targetLang = "fr";
+        } else if (browserLang.startsWith("ar")) {
+          targetLang = "ar";
+        }
       }
     } catch {
-      // Local storage access error handled gracefully.
+      // Local storage or navigator access error handled gracefully.
     }
+
+    setLanguageState(targetLang);
+    document.documentElement.lang = targetLang;
+    document.documentElement.dir = targetLang === "ar" ? "rtl" : "ltr";
   }, []);
 
   // Function to switch active language and update local storage and document direction.
